@@ -106,16 +106,28 @@ footer {
     font-size: 12px;
 }
 
-div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
-    background-color: var(--primary-color);
+div:where(.swal2-container) h2:where(.swal2-title) {
+    font-size: 22px !important;
 }
 
+/*BG do btn confirmar*/
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: var(--primary-color) !important;
+    width: 90px !important;
+}
+/*BG do btn cancelar*/
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
+    background-color: grey !important;
+    width: 90px !important;
+}
+/*cor do text do alert*/
 div:where(.swal2-container) .swal2-html-container {
-    color: var(--primary-color);
+    color: #474747 !important;
 }
 div:where(.swal2-container) div:where(.swal2-popup) {
-    width: 20em;
+    width: 20em !important;
 }
+
 
 /*Responsividade*/
 @media (max-width: 720px) {

@@ -10,29 +10,30 @@ let myTasks = [];
 /**quarto passo, criar minhaFuncao, meuArray.push colocar o conteúdo digitado no array com param input.value que é o valor digitado no input */
 function addNewTask() {
 
-      // Verificar se o campo de entrada está vazio
-  if (input.value.trim() === "") { //compara se está vazio e se espaço, trim tira o espaço ficando vazio
-    Swal.fire({ //Alert do sweetAlert textos chamam aqui
-        text: "C'mon! Type a task! :)",
-        confirmButtonText: 'OK'
-      })
-    return; // Retorna para evitar adicionar uma tarefa vazia à lista
-  } else {
+    // Verificar se o campo de entrada está vazio
+    if (input.value.trim() === "") { //compara se está vazio e se espaço, trim tira o espaço ficando vazio
+        Swal.fire({ //Alert do sweetAlert textos chamam aqui
+            text: "C'mon! Type a task! :)",
+            confirmButtonText: 'OK'
+        })
+        return; // Retorna para evitar adicionar uma tarefa vazia à lista
+    } else {
 
-    // myTasks.push(input.value); para FINALIZAR TAREFA, CONSTROI OBJ ABAIXO
-    myTasks.push({ //cria objeto toDo(tarefa recebe input.value) e (done começa em não feito ou seja, false)
-        //porém agora a tarefa não chega pronta, chega o OBJ
-        toDo: input.value,
-        done: false,
-        createdAt: Date.now()  // Adiciona um timestamp à tarefa, para ordenação por ordem de criação
+        // myTasks.push(input.value); para FINALIZAR TAREFA, CONSTROI OBJ ABAIXO
+        myTasks.push({ //cria objeto toDo(tarefa recebe input.value) e (done começa em não feito ou seja, false)
+            //porém agora a tarefa não chega pronta, chega o OBJ
+            toDo: input.value,
+            done: false,
+            createdAt: Date.now()  // Adiciona um timestamp à tarefa, para ordenação por ordem de criação
 
-    });
+        });
 
-    //limpar input depois de add
-    input.value = "";
+        //limpar input depois de add
+        input.value = "";
 
-    //chama funcao mostrar tarefas
-    showTasks(); }
+        //chama funcao mostrar tarefas
+        showTasks();
+    }
 }
 
 /**segundo passo, "ouvir"Quando clicarem e o param click, minhaFuncao */
@@ -50,14 +51,14 @@ function showTasks() {
             return a.createdAt - b.createdAt; // Mantém a ordem de criação se o estado "done" for o mesmo
         }
         return a.done - b.done; // Ordena por "done" (false primeiro, true depois)
-});
+    });
 
     //passo 3 pegar todos os itens do array usando forEach
     //posicao (pos) p/ saber qual deletar
     myTasks.forEach((task, pos) => {
         //4 passo, chama var newLi de nova lista recebe por crases e cola o html dentro das CRASES, interpolou senão seria newLi = newLi + `..`
         //task.done é um if, se task.done for verdadeiro adiciona a classe "done" 
-       
+
         const checkboxImg = task.done ? "./img/bx-checkbox-checked.png" : "./img/bx-checkbox.png";
         newLi = `${newLi}
         <li class="task ${task.done && "done"}">
@@ -90,16 +91,30 @@ function showTasks() {
 
 
 //DELETAR TASKS
-function deleteTask(pos) {
+async function deleteTask(pos) { //funcao async para poder usar o sweet alert, pq retorna uma promise, aguarda ação do user para executar
 
-    //array.splice <- é uma funcaopara deletar array, falo 2 coisas, 
-    //qual pos do array e segundo é qnts itens a partir dessa pos
-    myTasks.splice(pos, 1) //ou seja, quem eu quero deletar 'pos' e quantos itens quero deletar '1'.
-    //após isso preciso que ele vai no array alterado e rebuild tudo de novo atualizado
+    const result = await Swal.fire({
+        title: "Delete task!",
+        text: "Are you sure?",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#000000",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Delete"
+      })
+     //cria var com 
 
-    showTasks();
+    if (result.isConfirmed) {
+        //array.splice <- é uma funcaopara deletar array, falo 2 coisas, 
+        //qual pos do array e segundo é qnts itens a partir dessa pos
+        myTasks.splice(pos, 1) //ou seja, quem eu quero deletar 'pos' e quantos itens quero deletar '1'.
+        //após isso preciso que ele vai no array alterado e rebuild tudo de novo atualizado
 
-    console.log(pos); //joga essa funcao no onclick do img trash
+        showTasks();
+
+        console.log(pos); //joga essa funcao no onclick do img trash
+    }
+
 }
 
 
