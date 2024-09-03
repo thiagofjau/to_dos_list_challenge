@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+}
+
+:root {
+    --primary-color: #3b8e7d;
+}
+
+
+body {
+    background: #3c3c3c05;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    color: var(--primary-color);
+}
+
+.container {
+    background-color: #3b8e7d10;
+    width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto 0;
+}
+
+.input-task {
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    margin: 0 20px;
+}
+
+
+.btn-add {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 15px;
+    width: 80px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-add:hover {
+    opacity: 0.8;
+}
+
+.list-task {
+   
+    width: 100%;
+    list-style: none;
+}
+
+.task {
+    display: flex;
+    height: 45px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-color: #f2f2f2;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.task:hover {
+    background-color: #3b8e7d04;
+}
+
+img {
+    height: 25px;
+    opacity: 0; /*zera a img, chama hover e aumenta opacity pra aparecer*/
+    transition: opacity 0.4s ease-in-out;
+}
+
+.task:hover img {
+    opacity: 1;
+}
+
+/*classe done para adicionar no if quando task done*/
+.done {
+    background-color: #3b8e7d78;
+    color: var(--text-color);
+    text-decoration: line-through;
+}
+.done:hover {
+    background-color: #3b8e7d78;
+    color: var(--primary-color);
+    text-decoration: line-through;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: var(--primary-color);
+}
+
+div:where(.swal2-container) .swal2-html-container {
+    color: var(--primary-color);
+}
+div:where(.swal2-container) div:where(.swal2-popup) {
+    width: 20em;
+}
+
+/*Responsividade*/
+@media (max-width: 720px) {
+    .container {
+        width: 90%; /* Ajusta a largura do container para ocupar 90% da tela */
+        padding: 15px; /* Ajusta o padding */
+        margin: 20px auto; /* Centraliza o container */
+    }
+
+    .input-task {
+        width: 100%; /* Aumenta a largura para ocupar 100% da largura do container */
+        margin: 10px 0; /* Ajusta a margem para não haver espaçamento lateral */
+        padding-left: 15px; /* Diminui o padding */
+    }
+
+    .btn-add {
+        width: 100%; /* Aumenta a largura do botão para 100% */
+        margin-left: 0; /* Remove a margem lateral */
+        margin: 10px 0 10px 0;  /* Adiciona uma margem superior para espaçamento */
+    }
+
+    .task {
+        height: auto; /* Permite que a altura se ajuste automaticamente */
+        padding: 10px; /* Ajusta o padding */
+    }
+
+    .task img {
+        height: 20px; /* Ajusta o tamanho das imagens */
+        opacity: 1; /* Mantém as imagens visíveis por padrão */
+    }
+
+    .task p {
+        margin: 5px 0; /* Adiciona margem ao parágrafo */
+        text-align: center;
+        width: 100%; /* O texto ocupa toda a largura */
+    }
+}
