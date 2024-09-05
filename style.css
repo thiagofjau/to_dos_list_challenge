@@ -33,10 +33,9 @@ h1 {
 .input-task {
     border: none;
     border-radius: 10px;
-    width: 300px;
+    width: 329px;
     height: 40px;
     padding-left: 20px;
-    margin: 0 20px;
 }
 
 
@@ -45,7 +44,7 @@ h1 {
     border-radius: 5px;
     padding: 10px;
     margin-left: 15px;
-    width: 80px;
+    width: 110px;
     background-color: var(--primary-color);
     color: white;
     font-size: 17px;
@@ -86,6 +85,14 @@ img {
 
 .task:hover img {
     opacity: 1;
+}
+
+.edit-trash {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
 }
 
 /*classe done para adicionar no if quando task done*/
