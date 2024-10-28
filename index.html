@@ -3,15 +3,16 @@
     
 
 <head>
-    <script>
-        if (window.location.hostname.includes("thiagofjau.github.io")) {
-            window.location.href = window.location.href.replace("https://thiagofjau.github.io", "https://thiagofigueredo.com.br");
-        }
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo's List</title>
     <link rel="stylesheet" href="./style.css">
+     <script>
+        if (window.location.hostname.includes("thiagofjau.github.io")) {
+            const path = window.location.pathname; // obtém o caminho após o hostname, como "/to_dos_list_challenge"
+            window.location.href = `https://thiagofigueredo.com.br${path}`;
+        }
+    </script>
 </head>
 
 <body>
